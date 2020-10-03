@@ -1,6 +1,6 @@
 # poc-fix project
 
-This is an very simple POC with Quarkus and Quickfixj.
+This is a very simple POC with Quarkus and Quickfixj.
 
 ## Running it locally
 
