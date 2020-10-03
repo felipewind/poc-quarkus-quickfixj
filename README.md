@@ -37,6 +37,7 @@ localhost:8090/swagger-ui
 - GET /session-settings
   - View the SessionSettings object parameters
 
+## Documentation
 
 ### Quickfixj documentation
 - https://www.quickfixj.org/
