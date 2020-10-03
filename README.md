@@ -26,6 +26,8 @@ localhost:8080/swagger-ui
 - GET /session-settings
   - View the SessionSettings object parameters
 
+- POST /new-order-single
+  - Send and extremely simple NewOrderSingle message
 
 
 ### Acceptor
@@ -34,9 +36,6 @@ localhost:8090/swagger-ui
 ```
 - GET /session-settings
   - View the SessionSettings object parameters
-
-- POST /new-order-single
-  - Send and extremely simple NewOrderSingle message
 
 
 ### Quickfixj documentation
