@@ -19,7 +19,7 @@ public class SessionSettingsFactory {
 
     private static final Logger LOG = LoggerFactory.getLogger(SessionSettingsFactory.class.getName());
 
-    @ConfigProperty(name = "quickfixSessionSettings")
+    @ConfigProperty(name = "quickfix")
     List<String> quickfixSessionSettings;
 
     public SessionSettingsFactory() {
