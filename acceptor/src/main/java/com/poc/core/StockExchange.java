@@ -40,17 +40,18 @@ public class StockExchange {
     public void init() {
         LOG.info("init");
 
-        sessionSettings = sessionSettingsFactory.getSessionSettings();
-        LOG.info("SessionSettings created:\n" + sessionSettings.toString());
-
-        MessageStoreFactory messageStoreFactory = new MemoryStoreFactory();
-
-        LogFactory logFactory = new ScreenLogFactory(sessionSettings);
-
-        MessageFactory messageFactory = new DefaultMessageFactory();
-        LOG.info("MessageFactory created - DefaultMessageFactory");
-
         try {
+
+            sessionSettings = sessionSettingsFactory.getSessionSettings();
+            LOG.info("SessionSettings created:\n" + sessionSettings.toString());
+
+            MessageStoreFactory messageStoreFactory = new MemoryStoreFactory();
+
+            LogFactory logFactory = new ScreenLogFactory(sessionSettings);
+
+            MessageFactory messageFactory = new DefaultMessageFactory();
+            LOG.info("MessageFactory created - DefaultMessageFactory");
+
             acceptor = new SocketAcceptor(stockExchangeApplication, messageStoreFactory, sessionSettings, logFactory,
                     messageFactory);
             LOG.info("Acceptor created - SocketAcceptor");

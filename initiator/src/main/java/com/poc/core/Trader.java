@@ -1,5 +1,8 @@
 package com.poc.core;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -47,17 +50,18 @@ public class Trader {
     public void init() {
         LOG.info("init");
 
-        sessionSettings = sessionSettingsFactory.getSessionSettings();
-        LOG.info("SessionSettings created:\n" + sessionSettings.toString());
-
-        MessageStoreFactory messageStoreFactory = new MemoryStoreFactory();
-
-        LogFactory logFactory = new ScreenLogFactory(sessionSettings);
-
-        MessageFactory messageFactory = new DefaultMessageFactory();
-        LOG.info("MessageFactory created - DefaultMessageFactory");
-
         try {
+
+            sessionSettings = sessionSettingsFactory.getSessionSettings();
+            LOG.info("SessionSettings created:\n" + sessionSettings.toString());
+
+            MessageStoreFactory messageStoreFactory = new MemoryStoreFactory();
+
+            LogFactory logFactory = new ScreenLogFactory(sessionSettings);
+
+            MessageFactory messageFactory = new DefaultMessageFactory();
+            LOG.info("MessageFactory created - DefaultMessageFactory");
+
             initiator = new SocketInitiator(traderApplication, messageStoreFactory, sessionSettings, logFactory,
                     messageFactory);
             LOG.info("Initiator created - SocketInitiator");
