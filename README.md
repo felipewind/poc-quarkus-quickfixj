@@ -1,4 +1,4 @@
-# poc-fix project
+# poc-quarkus-quickfixj project
 
 This is a very simple POC with Quarkus and Quickfixj.
 
