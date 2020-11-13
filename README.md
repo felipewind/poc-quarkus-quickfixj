@@ -16,7 +16,7 @@ To run this POC locally, follow the steps below:
 ./mvnw compile quarkus:dev
 ```
 
-## Rest API
+## Swagger
 
 ### Initiator
 ```
