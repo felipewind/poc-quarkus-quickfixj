@@ -1,6 +1,6 @@
 package com.helesto.service;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import com.helesto.core.StockExchange;
@@ -9,10 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import quickfix.Message;
+import quickfix.Session;
 import quickfix.SessionID;
+import quickfix.SessionNotFound;
 import quickfix.fix44.ExecutionReport;
 
-@RequestScoped
+@ApplicationScoped
 public class ExecutionReportService {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ExecutionReportService.class.getName());
@@ -61,13 +63,12 @@ public class ExecutionReportService {
 		// // Tag 59 TimeInForce
 		// executionReport.setField(new TimeInForce(TimeInForce.DAY));
 
-		// try {
-		// 	Session.sendToTarget(executionReport, sessionID);
+		try {
+			Session.sendToTarget(executionReport, sessionID);
 
-		// } catch (SessionNotFound e) {
-		// 	LOG.error(e.getMessage());
-		// 	throw e;
-		// }
+		} catch (SessionNotFound e) {
+			LOG.error(e.getMessage());
+		}
 
 	}
 
