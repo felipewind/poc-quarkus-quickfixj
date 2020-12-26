@@ -5,8 +5,9 @@ services:
     container_name: poc-quarkus-quickfix-acceptor
     image: poc-quarkus-quickfix-acceptor:latest    
     build:
-      context: ./poc-fix-acceptor
+      context: ./poc-fix-acceptor/
       dockerfile: ./src/main/docker/Dockerfile.dev
+      
     ports:
       - 8090:8090
     networks:
@@ -23,33 +24,30 @@ services:
           SocketAcceptPort=9880,
           ScreenLogShowHeartBeats=Y
 
-  # poc-quarkus-quickfix-initiator:
-  #   container_name: poc-quarkus-quickfix-initiator
-  #   image: poc-quarkus-quickfix-initiator:latest    
-  #   build:
-  #     context: ./poc-fix-initiator
-  #     dockerfile: ./src/main/docker/Dockerfile.dev
-  #   environment:      
-  #     - QUICKFIX=[default],
-  #         [session],
-  #         BeginString=FIX.4.4,
-  #         SenderCompID=BANZAI,
-  #         TargetCompID=EXEC,
-  #         ConnectionType=initiator,
-  #         StartTime=00:00:00,
-  #         EndTime=00:00:00,
-  #         ReconnectInterval=5,
-  #         HeartBtInt=30,
-  #         SocketConnectHost=poc-quarkus-quickfix-acceptor,
-  #         SocketConnectPort=9880,
-  #         ScreenLogShowHeartBeats=Y
-  #   ports:
-  #     - 8080:8080
-  #   networks:
-  #     - poc-quarkus-quickfix-net
-
-volumes:
-  maven-repo:
+  poc-quarkus-quickfix-initiator:
+    container_name: poc-quarkus-quickfix-initiator
+    image: poc-quarkus-quickfix-initiator:latest    
+    build:
+      context: ./poc-fix-initiator
+      dockerfile: ./src/main/docker/Dockerfile.dev
+    environment:      
+      - QUICKFIX=[default],
+          [session],
+          BeginString=FIX.4.4,
+          SenderCompID=BANZAI,
+          TargetCompID=EXEC,
+          ConnectionType=initiator,
+          StartTime=00:00:00,
+          EndTime=00:00:00,
+          ReconnectInterval=5,
+          HeartBtInt=30,
+          SocketConnectHost=poc-quarkus-quickfix-acceptor,
+          SocketConnectPort=9880,
+          ScreenLogShowHeartBeats=Y
+    ports:
+      - 8080:8080
+    networks:
+      - poc-quarkus-quickfix-net
 
 networks:
   poc-quarkus-quickfix-net:
