@@ -39,7 +39,8 @@ public class NewOrderSingleService {
 
         SessionID sessionID = trader.getSessionID();
 
-        NewOrderSingle newOrderSingle = new NewOrderSingle();
+		// Tag 35 MsgType = D
+		NewOrderSingle newOrderSingle = new NewOrderSingle();
 
         // Tag 11 ClOrdID
 		newOrderSingle.set(new ClOrdID(request.getClOrdID()));
