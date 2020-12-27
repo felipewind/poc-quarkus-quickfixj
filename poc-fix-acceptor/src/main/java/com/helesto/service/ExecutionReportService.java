@@ -49,7 +49,7 @@ public class ExecutionReportService {
 			executionReport.set(new ExecType(ExecType.FILL));
 
 			// Tag 39 OrdStatus
-			executionReport.set(new OrdStatus(OrdStatus.NEW));
+			executionReport.set(new OrdStatus(OrdStatus.FILLED));
 
 			// Tag 54 Side
 			executionReport.set(newOrderSingle.getSide());
