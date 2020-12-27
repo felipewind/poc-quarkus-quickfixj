@@ -2,23 +2,25 @@
 
 This is a very simple POC with [Quarkus](https://quarkus.io/) and [QuickfixJ](https://www.quickfixj.org/).
 
-In the project, the `Acceptor` represents the stock exchange and the `Initiator` represents a broker.
+In this project, the `Acceptor` represents a `stock exchange` and the `Initiator` represents a `broker`.
 
-They communicate each other with QuickfixJ.
+They communicate each other using the [Finantial Information eXchange (FIX) protocol] (https://en.wikipedia.org/wiki/Financial_Information_eXchange) with QuickfixJ.
+
+
 
 ## What can you do in this test
 
-In this test the storage and logs are kept only in memory. 
+In this test the storage is kept only in memory and the logs are printed on the console.
 
 QuickfixJ allows you to put storage and logs in files or databases.
 
-So, to see the FIX messages exchanged in this test you must see the log console.
+To see the FIX messages exchanged in this test you must look at the log console.
 
 `Initiator` makes a login request to `Acceptor`.
 
 They exchange heart beat messages.
 
-The `Initiator` can send a New Single Order message.
+The `Initiator` can send a New Single Order message using one endpoint with Swagger.
 
 The `Acceptor` automatically executes the orders and respond with an Exeution Report message.
 
@@ -60,24 +62,38 @@ localhost:8080/swagger-ui
 
 ### With docker-compose
 
-
+Inside the root folder of the project, execute:
+```
+chmod +x ./run.sh
+./run.sh
+```
 
 ### Without docker-compose
 
-To run this POC locally, follow the steps below:
 1. Enter inside the `poc-fix-acceptor` folder and type:
-```bash
+```
 ./mvnw compile quarkus:dev -Ddebug=5006
 ```
 
 2. Enter inside the `poc-fix-initiator` folder and type:
-```bash
+```
 ./mvnw compile quarkus:dev
 ```
 
 
+## Warning about the tag separator in the Linux console
 
+The tag separator is the SOH (start of heading) character. Unfortunately, it does not appear on the Linux console.
+```
+Oct   Dec   Hex   Char                        Oct   Dec   Hex   Char
+────────────────────────────────────────────────────────────────────────
+001   1     01    SOH (start of heading)      101   65    41    A
+```       
 
+As a workaround, you can run the application and send the data to a file with the `>>` terminal operator, like:
+```bash
+./run.sh >> ~/my_log_file
+```
 
 
 ## Documentation
@@ -86,6 +102,9 @@ To run this POC locally, follow the steps below:
 - https://www.quickfixj.org/
 - https://github.com/quickfix-j/quickfixj
 
+### FIX protocol
+- https://en.wikipedia.org/wiki/Financial_Information_eXchange
+- https://www.fixtrading.org/
 
 ### Quarkus
 - https://quarkus.io/
