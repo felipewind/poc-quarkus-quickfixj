@@ -4,7 +4,7 @@ This is a very simple POC with [Quarkus](https://quarkus.io/) and [QuickfixJ](ht
 
 In this project, the `Acceptor` represents a `stock exchange` and the `Initiator` represents a `broker`.
 
-They communicate each other using the [Finantial Information eXchange (FIX) protocol] (https://en.wikipedia.org/wiki/Financial_Information_eXchange) with QuickfixJ.
+They communicate each other using the [Finantial Information eXchange (FIX) protocol](https://en.wikipedia.org/wiki/Financial_Information_eXchange) with QuickfixJ.
 
 
 
