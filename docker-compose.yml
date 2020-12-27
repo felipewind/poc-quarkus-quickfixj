@@ -6,7 +6,7 @@ services:
     image: poc-quarkus-quickfix-acceptor:latest    
     build:
       context: ./poc-fix-acceptor/
-      dockerfile: ./src/main/docker/Dockerfile.dev
+      dockerfile: ./src/main/docker/Dockerfile.fast-jar
       
     ports:
       - 8090:8090
@@ -29,7 +29,7 @@ services:
     image: poc-quarkus-quickfix-initiator:latest    
     build:
       context: ./poc-fix-initiator
-      dockerfile: ./src/main/docker/Dockerfile.dev
+      dockerfile: ./src/main/docker/Dockerfile.fast-jar
     environment:      
       - QUICKFIX=[default],
           [session],
