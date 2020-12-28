@@ -13,7 +13,7 @@ services:
     networks:
       - poc-quarkus-quickfix-net
     environment:
-      - QUICKFIX=quickfix=[default],
+      - QUICKFIX=[default],
           [session],
           BeginString=FIX.4.4,
           SenderCompID=EXEC,
